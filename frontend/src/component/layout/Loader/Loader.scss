@@ -1,0 +1,27 @@
+.loading {
+    width: 100vw;
+    height: 100vh;
+    background-color: #1a1a1a; /* Dark grey */
+    display: grid;
+    place-items: center;
+    max-width: 100%;
+  }
+  
+  .loading > div {
+    width: 10vmax;
+    height: 10vmax;
+    border-bottom: 5px solid #ff4500; /* Dark orange */
+    border-top: 5px solid #ffdb58; /* Gold */
+    border-left: 5px solid #1a1a1a; /* Dark grey */
+    border-right: 5px solid #1a1a1a; /* Dark grey */
+    border-radius: 50%;
+  
+    animation: loadingRotate 800ms linear infinite;
+  }
+  
+  @keyframes loadingRotate {
+    to {
+      transform: rotateZ(-360deg);
+    }
+  }
+  

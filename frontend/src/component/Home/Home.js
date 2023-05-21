@@ -1,43 +1,61 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CgMouse } from 'react-icons/all'
 import './Home.scss'
-import Product from './Product.js'
+import ProductCard from './ProductCard.js'
+import MetaData from '../layout/MetaData.js'//temp component for work , as we would be fetching products when we implemet redux
+import { clearErrors, getProducts } from '../../actions/productAction'
+import { useSelector, useDispatch } from 'react-redux'
 
-
-//temp component for work , as we would be fetching products when we implemet redux
-const product = {
-    _id: 'himanshu',
-    name: 'Nike Slim Shirt',
-    price: '$120',
-    images: [{ url: 'https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/10139231/2019/7/12/819e3149-8817-476c-9f7c-9d7dad22e9381562926754671-Nike-Dri-FIT-Breathe-Strike-7151562926753190-1.jpg' }],
-};
+import Loader from '../layout/Loader/Loader'
+import { useAlert } from 'react-alert'
 
 const Home = () => {
+    const alert = useAlert()//to use alert
+    const dispatch = useDispatch()//to dispatch actions
+    const { loading, error, productsCount, products } = useSelector(state => state.products)//to get the state from redux store
+    // console.log(products);
+
+    useEffect(() => {
+        if (error) {
+            alert.error(error);
+            dispatch(clearErrors());
+        }
+        dispatch(getProducts())
+    }, [dispatch, error, alert])
+
     return (
         <>
-            <div className='banner'>
-                <p>Welcome to Ecommerce</p>
-                <h1>FIND AMAZING PRODUCTS BELOW</h1>
+            {
+                loading ? (
+                    <Loader />
+                ) : (
+                    <>
+                        {/* sets the title of the page */}
+                        <MetaData title='ECOMMERCE' />
 
-                <a href='#container'>
-                    <button >
-                        Explore <CgMouse />
-                    </button>
-                </a>
-            </div>
+                        <div className='banner'>
+                            <p>Welcome to Ecommerce</p>
+                            <h1>FIND AMAZING PRODUCTS BELOW</h1>
 
-            <h2 className='homeHeading'>Featured Products</h2>
+                            <a href='#container'>
+                                <button >
+                                    Explore <CgMouse />
+                                </button>
+                            </a>
+                        </div>
 
-            <div className='container' id='container'>
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-                <Product product={product} />
-            </div>
+                        <h2 className='homeHeading'>Featured Products</h2>
+
+                        <div className='container' id='container'>
+                            {
+                                products && products.map(product => (
+                                    <ProductCard key={product._id} product={product} />
+                                ))
+                            }
+                        </div>
+                    </>
+                )
+            }
         </>
     )
 }

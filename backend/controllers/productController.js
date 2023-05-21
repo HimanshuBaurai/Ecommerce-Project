@@ -19,8 +19,8 @@ exports.createProduct = catchAsyncErrors(
 //get all products(Admin)
 exports.getAllProducts = catchAsyncErrors(
     async (req, res, next) => {
-
-        const resultPerPage = 5;
+        // return next(new ErrorHandler("This route is not yet defined", 500));//just for texting react-alert function, nothing special
+        const resultPerPage = 8;
         const productsCount = await Product.countDocuments();
 
         //for searching
