@@ -12,8 +12,7 @@ import { useAlert } from 'react-alert'
 const Home = () => {
     const alert = useAlert()//to use alert
     const dispatch = useDispatch()//to dispatch actions
-    const { loading, error, productsCount, products } = useSelector(state => state.products)//to get the state from redux store
-    // console.log(products);
+    const { loading, error, products } = useSelector(state => state.products)//to get the state from redux store
 
     useEffect(() => {
         if (error) {

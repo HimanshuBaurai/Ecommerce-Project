@@ -16,29 +16,39 @@ exports.createProduct = catchAsyncErrors(
     }
 );
 
-//get all products(Admin)
-exports.getAllProducts = catchAsyncErrors(
-    async (req, res, next) => {
-        // return next(new ErrorHandler("This route is not yet defined", 500));//just for texting react-alert function, nothing special
-        const resultPerPage = 8;
-        const productsCount = await Product.countDocuments();
+// Get All Product
+exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
+    const resultPerPage = 8;
+    const productsCount = await Product.countDocuments();
 
-        //for searching
-        const apiFeature = new ApiFeatures(Product.find(), req.query)
-            .search()
-            .filter()
-            .pagination(resultPerPage);
+    const apiFeature = new ApiFeatures(Product.find(), req.query)
+        .search()
+        .filter();
 
-        const products = await apiFeature.query;
+    let products = await apiFeature.query;
 
-        res.status(200).json({
-            success: true,
-            products,
-            productsCount,
-            resultPerPage,
-        });
-    }
-);
+    let filteredProductsCount = products.length;
+
+    apiFeature.pagination(resultPerPage); 
+
+    res.status(200).json({
+        success: true,
+        products,
+        productsCount,
+        resultPerPage,
+        filteredProductsCount,
+    });
+});
+
+// Get All Product (Admin)
+exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
+    const products = await Product.find();
+
+    res.status(200).json({
+        success: true,
+        products,
+    });
+});
 
 //get single product details
 exports.getProductDetails = catchAsyncErrors(

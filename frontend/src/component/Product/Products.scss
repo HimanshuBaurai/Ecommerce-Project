@@ -13,7 +13,7 @@
     flex-wrap: wrap;
     padding: 0 5vmax;
     justify-content: center;
-    min-height: 30vh;
+    min-height: 50vh;
 }
 
 .paginationBox {
@@ -75,22 +75,71 @@
     left: 4vmax;
 }
 
+.filterBox {
+    padding: 0.5rem;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 10vmax;
+    position: absolute;
+    top: 11.75vmax;
+    left: 3.5vmax;
+}
+
+.sectionBreak {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 1.5rem 0;
+}
+
+
+// .categoryBox {
+//     padding: 0%;
+// }
+
+// .category-link {
+//     list-style: none;
+//     color: rgba(0, 0, 0, 0.61);
+//     font: 400 0.8vmax "Roboto";
+//     margin: 0.4vmax;
+//     cursor: pointer;
+//     transition: all 0.5s;
+// }
+
+// .category-link:hover {
+//     color: tomato;
+// }
 .categoryBox {
-    padding: 0%;
+    padding: 0.5rem;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
 }
 
 .category-link {
     list-style: none;
-    color: rgba(0, 0, 0, 0.61);
-    font: 400 0.8vmax "Roboto";
-    margin: 0.4vmax;
+    color: #333;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    margin: 0.25rem;
+    padding: 0.25rem 1rem;
+    border-radius: 5px;
     cursor: pointer;
-    transition: all 0.5s;
+    transition: all 0.3s;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .category-link:hover {
-    color: tomato;
+    color: #fff;
+    background-color: tomato;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
+
 
 .filterBox>fieldset {
     border: 1px solid rgba(0, 0, 0, 0.329);

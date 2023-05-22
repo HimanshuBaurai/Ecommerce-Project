@@ -8,6 +8,7 @@ import ReviewCard from './ReviewCard.js'
 import Loader from '../layout/Loader/Loader'
 import { useAlert } from 'react-alert'
 import { clearErrors } from '../../actions/productAction'
+import MetaData from '../layout/MetaData'
 
 const ProductDetails = ({ match }) => {
 
@@ -22,7 +23,7 @@ const ProductDetails = ({ match }) => {
             dispatch(clearErrors());
         }
         dispatch(getProductDetails(match.params.id));
-    }, [dispatch, match.params.id,error,alert]);
+    }, [dispatch, match.params.id, error, alert]);
 
     const options = {
         edit: false,
@@ -38,6 +39,7 @@ const ProductDetails = ({ match }) => {
             {
                 loading ? (<Loader />) : (
                     <>
+                        <MetaData title={`${product.name} -- ECOMMERCE`} />
                         <div className='ProductDetails'>
 
                             <div>
