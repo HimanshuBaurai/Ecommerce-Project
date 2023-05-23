@@ -1,97 +1,90 @@
-// import React from "react";
-// import { ReactNavbar } from "overlay-navbar";
-// import cover from '../../../images/default-monochrome-black.svg'
-// import profileNavbar from '../../../images/profileNavbar.svg'
-
-
-// const options = {
-//   burgerColorHover: "#eb4034",
-//   logo: cover,
-//   logoWidth: "20vmax",
-//   navColor1: "rgb(213, 225, 149)",
-//   navColor2	:"rgb(213, 225, 149)",
-//   navColor3	:"rgb(213, 225, 149)",
-//   navColor4	:"rgb(213, 225, 149)",
-//   logoHoverSize: "10px",
-//   logoHoverColor: "#eb4034",
-//   link1Text: "Home",
-//   link2Text: "Products",
-//   link3Text: "Contact",
-//   link4Text: "About",
-//   link1Url: "/",
-//   link2Url: "/products",
-//   link3Url: "/contact",
-//   link4Url: "/about",
-//   link1Size: "1.3vmax",
-//   link1Color: "rgba(35, 35, 35,0.8)",
-//   nav1justifyContent: "flex-end",
-//   nav2justifyContent: "flex-end",
-//   nav3justifyContent: "flex-start",
-//   nav4justifyContent: "flex-start",
-//   link1ColorHover: "#eb4034",
-//   link1Margin: "1vmax",
-//   profileIconUrl: "/login",
-//   profileIconColor: "black",
-//   searchIconColor: "rgba(35, 35, 35,0.8)",
-//   cartIconColor: "rgba(35, 35, 35,0.8)",
-//   // SearchIconElement:,
-//   // CartIconElement:,
-//   ProfileIconElement: cover,
-//   searchIconUrl	:"/search",
-//   cartIconUrl	:"/cart",
-//   profileIconUrl	:"/account",
-//   profileIconColorHover: "#eb4034",
-//   searchIconColorHover: "#eb4034",
-//   cartIconColorHover: "#eb4034",
-//   cartIconMargin: "1vmax",
-// };
-
-// const Header = () => {
-//   return <ReactNavbar {...options} />;
-// };
-
-// export default Header;
-
-
-import React from "react";
-import { ReactNavbar } from "overlay-navbar";
-import logo from "../../../images/logo.svg";
-
-const options = {
-  burgerColorHover: "#eb4034",
-  logo,
-  logoWidth: "20vmax",
-  navColor1: "rgb(213, 225, 149)",
-  logoHoverSize: "10px",
-  logoHoverColor: "#eb4034",
-  link1Text: "Home",
-  link2Text: "Products",
-  link3Text: "Contact",
-  link4Text: "About",
-  link1Url: "/",
-  link2Url: "/products",
-  link3Url: "/contact",
-  link4Url: "/about",
-  link1Size: "1.3vmax",
-  link1Color: "rgba(35, 35, 35,0.8)",
-  nav1justifyContent: "flex-end",
-  nav2justifyContent: "flex-end",
-  nav3justifyContent: "flex-start",
-  nav4justifyContent: "flex-start",
-  link1ColorHover: "#eb4034",
-  link1Margin: "1vmax",
-  profileIconUrl: "/login",
-  profileIconColor: "rgba(35, 35, 35,0.8)",
-  searchIconColor: "rgba(35, 35, 35,0.8)",
-  cartIconColor: "rgba(35, 35, 35,0.8)",
-  profileIconColorHover: "#eb4034",
-  searchIconColorHover: "#eb4034",
-  cartIconColorHover: "#eb4034",
-  cartIconMargin: "1vmax",
-};
+import React, { useState } from 'react';
+import "./Header.scss";
+import cover from '../../../images/logo.svg'
+import { VscAccount } from "react-icons/vsc";
+import { motion } from 'framer-motion';
+import { HiMenuAlt4, HiX } from 'react-icons/hi';
+import { BsFillCartCheckFill, BsSearch } from "react-icons/bs";
 
 const Header = () => {
-  return <ReactNavbar {...options} />;
+  const [toggle, setToggle] = useState(false);
+
+  return (
+    <nav className='app__navbar'>
+      <div className='app__navbar-logo'>
+        <img src={cover} alt="logo" />
+      </div>
+      <ul className='app__navbar-links'>
+        {
+          ["home", "products", "contact", "about"].map((item) => (
+            <li className='app__flex p-text' key={`link=${item}`}>
+              <div />
+              {
+                item === "home" ?
+                  (
+                    <a href={`/`}>{item}</a>
+                  ) :
+                  (<a href={`/${item}`}>{item}</a>)
+              }
+            </li>
+          ))
+        }
+      </ul>
+
+      <ul className='app__navbar-links'>
+        <li className='app__flex p-text'>
+          {/* <img src='' href='/search' alt='' /> */}
+          <a href='/search' className='options'><BsSearch /></a>
+        </li>
+        <li className='app__flex p-text'>
+          <a href='/cart' className='options'><BsFillCartCheckFill /></a>
+        </li>
+        <li className='app__flex p-text'>
+          <a href='/login' className='options'><VscAccount /></a>
+        </li>
+      </ul>
+
+      <div className='app__navbar-menu'>
+        <HiMenuAlt4 onClick={() => setToggle(true)} />
+        {/* when toggle is true render the menu block of react */}
+        {
+          toggle && (
+            <motion.div
+              whileInView={{ x: [300, 0] }}
+              transition={{ duration: 0.85, ease: 'easeOut' }}
+            >
+              <HiX onClick={() => setToggle(false)} />
+              <ul>
+                {
+                  ["home", "products", "contact", "about"].map((item) => (
+                    <li className='app__flex p-text' key={`link=${item}`}>
+                      {
+                        item === "home" ?
+                          (
+                            <a href={`/`} onClick={() => setToggle(false)}>{item}</a>
+                          ) :
+                          (<a href={`/${item}`} onClick={() => setToggle(false)}>{item}</a>)
+                      }
+                    </li>
+                  ))
+                }
+                <li className='app__flex p-text'> 
+                  <a href='/search' className='options'><BsSearch />Search</a>
+                </li>
+                <li className='app__flex p-text'>
+                  <a href='/cart' className='options'><BsFillCartCheckFill />Cart</a>
+                </li>
+                <li className='app__flex p-text'>
+                  <a href='/login' className='options'><VscAccount />Account</a>
+                </li>
+              </ul> 
+            </motion.div>
+          )
+        }
+      </div>
+    </nav>
+  );
 };
 
 export default Header;
+

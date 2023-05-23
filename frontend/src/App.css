@@ -16,3 +16,14 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+.p-text {
+    font-size: 0.8rem;
+    text-align: left;
+    color: var(--gray-color);
+    line-height: 1.5;
+
+    @media screen and (min-width: 2000px) {
+        font-size: 1.75rem;
+    }
+}
