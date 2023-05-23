@@ -32,8 +32,8 @@ const LoginSignUp = ({ history, location }) => {
 
     const { name, email, password } = user;
 
-    const [avatar, setAvatar] = useState("/Profile.png");
-    const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
+    const [avatar, setAvatar] = useState("/logo192.png");
+    const [avatarPreview, setAvatarPreview] = useState("/logo192.png");
 
     const loginSubmit = (e) => {
         e.preventDefault();

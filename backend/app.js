@@ -1,11 +1,15 @@
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const app = express();
+const express = require('express');//importing express
+const app = express(); //initializing express
+const cookieParser = require('cookie-parser');//to parse the cookies
+const bodyParser=require('body-parser');//to parse the body of the request
+const fileUpload=require('express-fileupload');//to upload files
 
-const errorMiddleware = require('./middleware/error');
+const errorMiddleware = require('./middleware/error');//importing error middleware
 
-app.use(express.json());
-app.use(cookieParser());
+app.use(express.json());//to parse json data
+app.use(cookieParser());//to parse cookies
+app.use(bodyParser.urlencoded({extended:true}));//to parse the body of the request
+app.use(fileUpload());//to upload files
 
 //Routes import
 const product = require('./routes/productRoute');
