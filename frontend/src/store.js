@@ -5,11 +5,13 @@
 // These actions are handled by reducers, which are pure functions that take the current state and an action, and return a new state.Redux also provides middleware, which can be used to intercept and modify actions and the state.
 // By using Redux, developers can write applications that are easier to test, debug, and maintain, and that have a consistent and predictable data flow.
 
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { productDetailsReducer, productReducer } from './reducers/productReducer';
-import { userReducer, profileReducer,forgotPasswordReducer } from './reducers/userReducer';
+import { createStore, combineReducers, applyMiddleware } from 'redux';//redux
+import thunk from 'redux-thunk';//middleware
+import { composeWithDevTools } from 'redux-devtools-extension';//redux devtools
+
+import { productDetailsReducer, productReducer } from './reducers/productReducer';//reducers
+import { userReducer, profileReducer, forgotPasswordReducer } from './reducers/userReducer';//reducers
+import { cartReducer } from './reducers/cartReducer';//reducers
 
 const reducer = combineReducers({
     products: productReducer,
@@ -17,16 +19,23 @@ const reducer = combineReducers({
     user: userReducer,
     profile: profileReducer,
     forgotPassword: forgotPasswordReducer,
-});
+    cart: cartReducer
+});//combine all reducers
 
-let initialState = {};
+let initialState = {
+    //we have to set initial state for cartItems, otherwise it will be null
+    //we have to parse it to JSON, because we saved it as a string
+    cart: {
+        cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [],
+    },
+};//initial state
 
-const middleware = [thunk];
+const middleware = [thunk];//middleware
 
 const store = createStore(
     reducer,
     initialState,
     composeWithDevTools(applyMiddleware(...middleware))
-);
+);//create store
 
-export default store;
+export default store;//export store

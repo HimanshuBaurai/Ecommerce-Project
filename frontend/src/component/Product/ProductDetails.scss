@@ -1,40 +1,30 @@
 .ProductDetails {
+    background-color: rgb(255, 255, 255);
     width: 100vw;
-    height: 100vh;
     max-width: 100%;
     padding: 6vmax;
     box-sizing: border-box;
     display: flex;
-    background-color: white;
-    // background-image: url("https://www.transparenttextures.com/patterns/checkered-pattern.png");
-    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+    margin-top: 80px;
+}
 
-    >div {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        padding: 2vmax;
-        box-sizing: border-box;
-        border: 1px solid white;
+.ProductDetails>div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2vmax;
+    box-sizing: border-box;
+    border: 1px solid white;
+}
 
-        &:last-child {
-            align-items: flex-start;
-        }
-    }
+.ProductDetails>div:last-child {
+    align-items: flex-start;
 }
 
 .CarouselImage {
     width: 20vmax;
-}
-
-.redColor {
-    color: red;
-}
-
-.greenColor {
-    color: green;
 }
 
 .detailsBlock-1>h2 {
@@ -77,6 +67,10 @@
     align-items: center;
 }
 
+.detailsBlock-3-1-1{
+    display: flex; 
+}
+
 .detailsBlock-3-1-1>button {
     border: none;
     background-color: rgba(0, 0, 0, 0.616);
@@ -90,12 +84,23 @@
     background-color: rgba(0, 0, 0, 0.767);
 }
 
-.detailsBlock-3-1-1>input {
+// .detailsBlock-3-1-1>input {
+//     border: none;
+//     padding: 0.5vmax;
+//     width: 1vmax;
+//     text-align: center;
+//     outline: none;
+//     font: 400 0.8vmax "Roboto";
+//     color: rgba(0, 0, 0, 0.74);
+// }
+.detailsBlock-3-1-1>p {
     border: none;
-    padding: 0.5vmax;
+    padding: 0.25vmax;
+    margin: 0.25vmax;
     width: 1vmax;
     text-align: center;
     outline: none;
+    justify-content: center;
     font: 400 0.8vmax "Roboto";
     color: rgba(0, 0, 0, 0.74);
 }
@@ -203,11 +208,6 @@
 .reviewCard>p {
     color: rgba(0, 0, 0, 0.836);
     font: 600 0.9vmax "Roboto";
-}
-
-.reviewCard>span {
-    color: rgba(0, 0, 0, 0.445);
-    font: 600 0.8vmax cursive;
 }
 
 .reviewCardComment {
