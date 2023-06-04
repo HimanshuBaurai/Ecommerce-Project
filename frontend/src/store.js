@@ -12,6 +12,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';//redux devtools
 import { productDetailsReducer, productReducer } from './reducers/productReducer';//reducers
 import { userReducer, profileReducer, forgotPasswordReducer } from './reducers/userReducer';//reducers
 import { cartReducer } from './reducers/cartReducer';//reducers
+import { allOrdersReducer, myOrdersReducer, newOrderReducer, orderDetailsReducer, orderReducer } from "./reducers/orderReducer";
 
 const reducer = combineReducers({
     products: productReducer,
@@ -19,7 +20,12 @@ const reducer = combineReducers({
     user: userReducer,
     profile: profileReducer,
     forgotPassword: forgotPasswordReducer,
-    cart: cartReducer
+    cart: cartReducer,
+    newOrder: newOrderReducer,
+    myOrders: myOrdersReducer,
+    orderDetails: orderDetailsReducer,
+    allOrders: allOrdersReducer,
+    order: orderReducer,
 });//combine all reducers
 
 let initialState = {
@@ -27,6 +33,7 @@ let initialState = {
     //we have to parse it to JSON, because we saved it as a string
     cart: {
         cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [],
+        shippingInfo: localStorage.getItem('shippingInfo') ? JSON.parse(localStorage.getItem('shippingInfo')) : {}
     },
 };//initial state
 

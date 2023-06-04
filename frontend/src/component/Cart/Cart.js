@@ -8,8 +8,8 @@ import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 import { Link } from "react-router-dom";
 
 const Cart = ({ history }) => {
-    const dispatch = useDispatch();//dispatch
-    const { cartItems } = useSelector((state) => state.cart);//cart items
+    const dispatch = useDispatch();
+    const { cartItems } = useSelector((state) => state.cart);
 
     const increaseQuantity = (id, quantity, stock) => {
         const newQty = quantity + 1;
@@ -28,11 +28,11 @@ const Cart = ({ history }) => {
     };
 
     const deleteCartItems = (id) => {
-        dispatch(removeItemsFromCart(id));//remove items from cart
+        dispatch(removeItemsFromCart(id));
     };
 
     const checkoutHandler = () => {
-        history.push("/login?redirect=shipping");//redirect to login
+        history.push("/login?redirect=shipping");
     };
 
     return (
@@ -65,7 +65,7 @@ const Cart = ({ history }) => {
                                         >
                                             -
                                         </button>
-                                        <input type="number" value={item.quantity} readOnly />
+                                        <p>{item.quantity}</p>
                                         <button
                                             onClick={() =>
                                                 increaseQuantity(
@@ -74,7 +74,9 @@ const Cart = ({ history }) => {
                                                     item.stock
                                                 )
                                             }
-                                        >+ </button>
+                                        >
+                                            +
+                                        </button>
                                     </div>
                                     <p className="cartSubtotal">{`₹${item.price * item.quantity
                                         }`}</p>
