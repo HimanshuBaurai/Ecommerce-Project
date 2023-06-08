@@ -33,8 +33,8 @@ import Payment from "./component/Cart/Payment.js";
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import OrderSuccess from "./component/Cart/OrderSuccess.js";
-// import MyOrders from "./component/Order/MyOrders";
-// import OrderDetails from "./component/Order/OrderDetails";
+import MyOrders from "./component/Order/MyOrders.js";
+import OrderDetails from "./component/Order/OrderDetails.js";
 // import Dashboard from "./component/Admin/Dashboard.js";
 // import ProductList from "./component/Admin/ProductList.js";
 // import NewProduct from "./component/Admin/NewProduct";
@@ -44,9 +44,9 @@ import OrderSuccess from "./component/Cart/OrderSuccess.js";
 // import UsersList from "./component/Admin/UsersList";
 // import UpdateUser from "./component/Admin/UpdateUser";
 // import ProductReviews from "./component/Admin/ProductReviews";
-// import Contact from "./component/layout/Contact/Contact";
-// import About from "./component/layout/About/About";
-// import NotFound from "./component/layout/Not Found/NotFound";
+import Contact from "./component/layout/Contact/Contact.js";
+import About from "./component/layout/About/About.js";
+import NotFound from "./component/layout/Not Found/NotFound.js";
 
 
 
@@ -102,6 +102,8 @@ function App() {
       <ProtectedRoute exact path='/shipping' component={Shipping} />
       <ProtectedRoute exact path='/order/confirm' component={ConfirmOrder} />
       <ProtectedRoute exact path='/success' component={OrderSuccess} />
+      <ProtectedRoute exact path='/orders' component={MyOrders} />
+      <ProtectedRoute exact path='/order/:id' component={OrderDetails} />
 
       <Footer />
     </Router>

@@ -9,13 +9,13 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';//redux
 import thunk from 'redux-thunk';//middleware
 import { composeWithDevTools } from 'redux-devtools-extension';//redux devtools
 
-import { productDetailsReducer, productReducer } from './reducers/productReducer';//reducers
+import { productDetailsReducer, productReducer, newProductReducer, newReviewReducer, productReviewsReducer, productsReducer, reviewReducer } from './reducers/productReducer';//reducers
 import { userReducer, profileReducer, forgotPasswordReducer } from './reducers/userReducer';//reducers
 import { cartReducer } from './reducers/cartReducer';//reducers
 import { allOrdersReducer, myOrdersReducer, newOrderReducer, orderDetailsReducer, orderReducer } from "./reducers/orderReducer";
 
 const reducer = combineReducers({
-    products: productReducer,
+    products: productsReducer,
     productDetails: productDetailsReducer,
     user: userReducer,
     profile: profileReducer,
@@ -26,6 +26,7 @@ const reducer = combineReducers({
     orderDetails: orderDetailsReducer,
     allOrders: allOrdersReducer,
     order: orderReducer,
+    newReview:newProductReducer,
 });//combine all reducers
 
 let initialState = {
