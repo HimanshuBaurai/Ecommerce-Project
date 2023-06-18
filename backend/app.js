@@ -3,13 +3,16 @@ const app = express(); //initializing express
 const cookieParser = require('cookie-parser');//to parse the cookies
 const bodyParser = require('body-parser');//to parse the body of the request
 const fileUpload = require('express-fileupload');//to upload files
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 const path=require("path");
 
 const errorMiddleware = require('./middleware/error');//importing error middleware
 
 //config
-dotenv.config({ path: 'backend/config/config.env' });
+if (process.env.NODE_ENV !== "PRODUCTION") {
+    require('dotenv').config({ path: 'backend/config/config.env' });
+}
+
 
 app.use(express.json());//to parse json data
 app.use(cookieParser());//to parse cookies
