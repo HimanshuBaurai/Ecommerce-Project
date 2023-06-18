@@ -9,10 +9,51 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';//redux
 import thunk from 'redux-thunk';//middleware
 import { composeWithDevTools } from 'redux-devtools-extension';//redux devtools
 
-import { productDetailsReducer, productReducer, newProductReducer, newReviewReducer, productReviewsReducer, productsReducer, reviewReducer } from './reducers/productReducer';//reducers
-import { userReducer, profileReducer, forgotPasswordReducer } from './reducers/userReducer';//reducers
-import { cartReducer } from './reducers/cartReducer';//reducers
-import { allOrdersReducer, myOrdersReducer, newOrderReducer, orderDetailsReducer, orderReducer } from "./reducers/orderReducer";
+// import { productDetailsReducer, productReducer, newProductReducer, newReviewReducer, productReviewsReducer, productsReducer, reviewReducer } from './reducers/productReducer';//reducers
+// import { userReducer, profileReducer, forgotPasswordReducer } from './reducers/userReducer';//reducers
+// import { cartReducer } from './reducers/cartReducer';//reducers
+// import { allOrdersReducer, myOrdersReducer, newOrderReducer, orderDetailsReducer, orderReducer } from "./reducers/orderReducer";
+
+// const reducer = combineReducers({
+//     products: productsReducer,
+//     productDetails: productDetailsReducer,
+//     user: userReducer,
+//     profile: profileReducer,
+//     forgotPassword: forgotPasswordReducer,
+//     cart: cartReducer,
+//     newOrder: newOrderReducer,
+//     myOrders: myOrdersReducer,
+//     orderDetails: orderDetailsReducer,
+//     allOrders: allOrdersReducer,
+//     order: orderReducer,
+//     newReview:newProductReducer,
+// });//combine all reducers
+import {
+    newProductReducer,
+    newReviewReducer,
+    productDetailsReducer,
+    productReducer,
+    productReviewsReducer,
+    productsReducer,
+    reviewReducer,
+} from "./reducers/productReducer";
+
+import {
+    allUsersReducer,
+    forgotPasswordReducer,
+    profileReducer,
+    userDetailsReducer,
+    userReducer,
+} from "./reducers/userReducer";
+
+import { cartReducer } from "./reducers/cartReducer";
+import {
+    allOrdersReducer,
+    myOrdersReducer,
+    newOrderReducer,
+    orderDetailsReducer,
+    orderReducer,
+} from "./reducers/orderReducer";
 
 const reducer = combineReducers({
     products: productsReducer,
@@ -24,10 +65,16 @@ const reducer = combineReducers({
     newOrder: newOrderReducer,
     myOrders: myOrdersReducer,
     orderDetails: orderDetailsReducer,
+    newReview: newReviewReducer,
+    newProduct: newProductReducer,
+    product: productReducer,
     allOrders: allOrdersReducer,
     order: orderReducer,
-    newReview:newProductReducer,
-});//combine all reducers
+    allUsers: allUsersReducer,
+    userDetails: userDetailsReducer,
+    productReviews: productReviewsReducer,
+    review: reviewReducer,
+});
 
 let initialState = {
     //we have to set initial state for cartItems, otherwise it will be null

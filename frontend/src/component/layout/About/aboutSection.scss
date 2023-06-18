@@ -17,7 +17,7 @@
 .aboutSectionContainer {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 52%;
     background-color: rgb(255, 255, 255);
     width: 80vw;
     height: 80vh;
@@ -63,6 +63,10 @@
     color: rgba(0, 0, 0, 0.616);
     text-align: center;
     width: 80%;
+    transition: all .5s;
+    &:hover {
+        transform: scale(1.1);
+    } 
 }
 
 .aboutSectionContainer2 {
@@ -79,12 +83,12 @@
     font-size: 4vmax;
 }
 
-.youtubeSvgIcon {
-    color: tomato;
+.linkedinSvgIcon {
+    color: blue;
 }
 
 .instagramSvgIcon {
-    color: rgb(144, 81, 202);
+    color: rgb(243, 22, 166);
 }
 
 @media screen and (max-width: 600px) {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import "./Header.scss";
 import cover from '../../../images/logo.svg'
 import { VscAccount } from "react-icons/vsc";
@@ -11,9 +12,9 @@ const Header = () => {
 
   return (
     <nav className='app__navbar'>
-      <div className='app__navbar-logo'>
+      <Link to='/' className='app__navbar-logo'>
         <img src={cover} alt="logo" />
-      </div>
+      </Link> 
       <ul className='app__navbar-links'>
         {
           ["home", "products", "contact", "about"].map((item) => (
