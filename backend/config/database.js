@@ -6,5 +6,3 @@ const connectDatabase = () => {
 }
 
 module.exports = connectDatabase;
-
-// mongodb+srv://himanshu:himanshu23@beyondbuy.yto20ow.mongodb.net/beyondbuyDB?retryWrites=true&w=majority
