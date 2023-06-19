@@ -1,7 +1,7 @@
 // Import React
 import React, { useState, useEffect } from 'react';
 // Import React Router
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch  } from "react-router-dom"
 // Import WebFont
 import WebFont from 'webfontloader';
 // Import CSS
@@ -87,7 +87,7 @@ function App() {
         </Elements>
       )}
 
-      <switch>
+      <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/product/:id' component={ProductDetails} />
         <Route exact path='/products' component={Products} />
@@ -165,7 +165,7 @@ function App() {
             window.location.pathname === "/process/payment" ? null : NotFound
           }
         />
-      </switch>
+      </Switch>
 
       <Footer />
     </Router>
