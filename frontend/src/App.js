@@ -74,7 +74,7 @@ function App() {
     getStripeApiKey();
   }, []);
 
-  window.addEventListener('contextmenu', (e) => e.preventDefault());//to avoid people doing inspect
+  // window.addEventListener('contextmenu', (e) => e.preventDefault());//to avoid people doing inspect
 
   return (
     <Router>
